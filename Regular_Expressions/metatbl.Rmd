@@ -1,0 +1,24 @@
+---
+output: html_document
+---
+
+```{r, echo=FALSE}
+library(knitr)
+
+mc_tibl <- data.frame(Metacharacter =
+                        c(".", "\\\\w", "\\\\W", "\\\\d", "\\\\D",
+                          "\\\\s", "\\\\S", "[xyz]", "[^xyz]", "[a-z]",
+                          "^", "$", "\\\\n", "+", "*", "?", "|", "{5}", "{2, 5}",
+                          "{2, }"),
+           Meaning =
+             c("Any Character", "A Word", "Not a Word", "A Digit", "Not a Digit",
+               "Whitespace", "Not Whitespace", "A Set of Characters", 
+               "Negation of Set", "A Range of Characters",
+               "Beginning of String", "End of String", "Newline", 
+               "One or More of Previous", "Zero or More of Previous",
+               "Zero or One of Previous", "Either the Previous or the Following",
+               "Exactly 5 of Previous", "Between 2 and 5 or Previous",
+               "More than 2 of Previous"),
+           stringsAsFactors = FALSE)
+kable(mc_tibl, align = "c")
+```

@@ -1,0 +1,123 @@
+- Class: meta
+  Course: The R Programming Environment
+  Lesson: Text Manipulation Functions
+  Author: Sean Kross
+  Type: Standard
+  Organization: The Johns Hopkins Data Science Lab
+  Version: 2.4.2
+
+- Class: text
+  Output: Most common types of data are encoded in text, even if that text is 
+    representing numerical values, so being able to manipulate text as a 
+    software developer is essential. R provides several built-in tools for 
+    manipulating text, and there is a rich ecosystem of packages for R for 
+    text based analysis. First let’s concentrate on some basic text 
+    manipulation functions.
+
+- Class: text
+  Output: Text in R is represented as a string object, which looks like a 
+    phrase surrounded by quotation marks in the R console. For example 
+    "Hello!" and 'Strings are fun!' are both strings. You can tell whether 
+    an object is a string using the is.character() function. Strings are also 
+    known as characters in R.
+
+- Class: cmd_question
+  Output: Create your own string in the R console by typing "Hello World!"
+  CorrectAnswer: 'Hello World!'
+  AnswerTests: omnitest(correctExpr='"Hello World!"')
+  Hint: Just type "Hello World!"
+
+- Class: cmd_question
+  Output: You can combine several strings using the paste() function. Provide
+    the arguments "Square" "Circle" and "Triangle" to paste() to see how it
+    works.
+  CorrectAnswer: paste("Square", "Circle", "Triangle")
+  AnswerTests: omnitest(correctExpr='paste("Square", "Circle", "Triangle")')
+  Hint: Just type paste("Square", "Circle", "Triangle")
+
+- Class: cmd_question
+  Output: By default the paste() function inserts a space between each word. 
+    You can insert a different string between each word by specifying the 
+    sep argument. Paste together the same three words as before, but this time
+    specify sep = "+"
+  CorrectAnswer: paste("Square", "Circle", "Triangle", sep = "+")
+  AnswerTests: omnitest(correctExpr='paste("Square", "Circle", "Triangle", sep = "+")')
+  Hint: Just type paste("Square", "Circle", "Triangle", sep = "+")
+
+- Class: mult_question
+  Output: Which of the following expressions evaluates to "Yes_No"
+  AnswerChoices: paste("Yes", "No", sep = "_");paste("Yes", "No", "_");paste(c("Yes", "No"), sep = "_")
+  CorrectAnswer: paste("Yes", "No", sep = "_")
+  AnswerTests: omnitest(correctVal= 'paste("Yes", "No", sep = "_")')
+  Hint: Refer to the previous question if you're having trouble.
+
+- Class: cmd_question
+  Output: A shortcut for combining all of the string arguments without any 
+    characters in between each of them is to use the paste0() function. Use
+    paste0() to paste together "Square" "Circle" and "Triangle"
+  CorrectAnswer: paste0("Square", "Circle", "Triangle")
+  AnswerTests: omnitest(correctExpr='paste0("Square", "Circle", "Triangle")')
+  Hint: Just type paste0("Square", "Circle", "Triangle")
+
+- Class: text
+  Output: You can also provide a vector of strings as an argument to paste().
+
+- Class: cmd_question
+  Output: First assign a string vector containing "Square" "Circle" and 
+    "Triangle" to a variable called shapes.
+  CorrectAnswer: shapes <- c("Square", "Circle", "Triangle")
+  AnswerTests: omnitest(correctExpr='shapes <- c("Square", "Circle", "Triangle")')
+  Hint: Just type shapes <- c("Square", "Circle", "Triangle")
+
+- Class: cmd_question
+  Output: Now enter paste("My favorite shape is a", shapes) into the R console.
+  CorrectAnswer: paste("My favorite shape is a", shapes)
+  AnswerTests: omnitest(correctExpr='paste("My favorite shape is a", shapes)')
+  Hint: Just type paste("My favorite shape is a", shapes)
+
+- Class: text
+  Output: As you can see, all of the possible string combinations are produced
+    when you provide a vector of strings as an argument to paste().
+
+- Class: cmd_question
+  Output: You can also collapse all of the elements of a vector of strings into
+    a single string by specifying the collapse argument. Enter
+    paste(shapes, collapse = " ") into the R console to see how this works.
+  CorrectAnswer: paste(shapes, collapse = " ")
+  AnswerTests: omnitest(correctExpr='paste(shapes, collapse = " ")')
+  Hint: Just type paste(shapes, collapse = " ")
+
+- Class: text
+  Output: Besides pasting strings together, there are a few other basic string 
+    manipulation functions you should be made aware of.
+
+- Class: cmd_question
+  Output: The nchar() function counts the number of characters in a string.
+    Enter nchar("Count Me!") into the R console to try this out.
+  CorrectAnswer: nchar("Count Me!")
+  AnswerTests: omnitest(correctExpr='nchar("Count Me!")')
+  Hint: Just type nchar("Count Me!")
+
+- Class: cmd_question
+  Output: The toupper() and tolower() functions make strings all uppercase or
+    lowercase respectively. First create a string vector called cases which
+    contains the strings "CAPS" "low" and "Title"
+  CorrectAnswer: cases <- c("CAPS", "low", "Title")
+  AnswerTests: omnitest(correctExpr='cases <- c("CAPS", "low", "Title")')
+  Hint: Just type cases <- c("CAPS", "low", "Title")
+
+- Class: cmd_question
+  Output: Now enter toupper(cases) into the R console.
+  CorrectAnswer: toupper(cases)
+  AnswerTests: omnitest(correctExpr='toupper(cases)')
+  Hint: Just type toupper(cases)
+
+- Class: cmd_question
+  Output: Now try entering tolower(cases) into the R console.
+  CorrectAnswer: tolower(cases)
+  AnswerTests: omnitest(correctExpr='tolower(cases)')
+  Hint: Just type tolower(cases)
+
+- Class: text
+  Output: In this lesson we only covered the basics of manipulating strings in
+    R, the real fun material is in the regular expressions lesson!
