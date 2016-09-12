@@ -1,0 +1,95 @@
+- Class: meta
+  Course: The R Programming Environment
+  Lesson: Reading Tabular Data
+  Author: Roger D. Peng
+  Type: Standard
+  Organization: JHU Biostatistics
+  Version: 2.4.2
+
+- Class: text
+  Output: The purpose of this lesson is to demonstrate some basic features of the 'readr' package in R for reading in tabular data. 
+
+- Class: text
+  Output: For some more details on the 'readr' package, you can refer to Section 1.3 of the book Mastering Software Development in R.
+
+- Class: text
+  Output: For this lesson, we will be using a small dataset on zip codes in the United States. This table contains information about the percent of each zip codes that is considered urban by the U.S. Census Bureau.
+
+- Class: cmd_question
+  Output: First load the 'readr' package using the library() function.
+  CorrectAnswer: library(readr)
+  AnswerTests: omnitest(correctExpr = "library(readr)")
+  Hint: Try loading the package with library(readr)
+
+- Class: text
+  Output: The file that we will be reading into R is called 'urban.csv.gz'. It is a comma-separated-value (CSV) file compressed with gzip. 
+
+- Class: cmd_question
+  Output: The directory in which the 'urban.csv.gz' data file is located is saved in an R object called 'datapath'. Print out this object to see the path.
+  CorrectAnswer: print(datapath)
+  AnswerTests: omnitest(correctExpr = "print(datapath)")
+  Hint: Try 'print(datapath)'
+  
+- Class: cmd_question
+  Output: Use the 'file.path()' function to construct the full path to the 'urban.csv.gz' file and store it in an object called 'datafile'
+  CorrectAnswer: datafile <- file.path(datapath, "urban.csv.gz")
+  AnswerTests: omnitest(correctExpr = 'datafile <- file.path(datapath, "urban.csv.gz")')
+  Hint: Try 'datafile <- file.path(datapath, "urban.csv.gz")'
+
+- Class: cmd_question
+  Output: How would you read this file into R using the read_csv() function in the 'readr' function and save the resulting data frame to an object named 'urban'? Assume that the file is in your current working directory.
+  CorrectAnswer: urban <- read_csv(datafile)
+  AnswerTests: omnitest(correctExpr = 'urban <- read_csv(datafile)')
+  Hint: Don't worry about the fact that the file is compressed or about specifying any other options to read_csv()
+
+- Class: cmd_question
+  Output: Take a look at the first few rows of the 'urban' data frame object by calling the head() function on it
+  CorrectAnswer: head(urban)
+  AnswerTests: omnitest(correctExpr = 'head(urban)')
+
+- Class: text
+  Output: You'll see that there are 5 columns - state, zcta5 (a 5-digit zip code identifier), County (the name of the county in which the zip code resides), PctUrban (the percentage of the zip code that is considered urban), and FIPS (a 5-digit identifier for the county).
+
+- Class: text
+  Output: Notice that the second column ("zcta5") was read in as an integer column. In most applications we will want this to be a character column.
+
+- Class: cmd_question
+  Output: How can we use the compact string representation of the 'col_types' argument to read_csv() to force the "zcta5" column to be character? Leave all of the other columns as the type that the currently are read in as and remember to save the output of read_csv() to an object named 'urban'.
+  CorrectAnswer: urban <- read_csv("urban.csv.gz", col_types = "cccdc")
+  AnswerTests: omnitest(correctExpr = 'urban <- read_csv("urban.csv.gz", col_types = "cccdc")')
+  Hint: The 'col_types' argument accepts a string argument containing letters representing the type of each column. For example, the string "ccc" says that the all three columns of a table should be "character".
+
+
+- Class: text
+  Output: It turns out we also don't need the last column of the data frame (the "FIPS") column. In order to save some space, we would like to tell read_csv() to not read that last column.
+
+- Class: cmd_question
+  Output: How can we tell read_csv() to not read in the last column of the table? Note that you can use the compact string representation of the 'col_types' argument for this too. Remember to save the output of read_csv() to an object named 'urban'. You can type 'play()' to play around in R before giving your answer.
+  CorrectAnswer: urban <- read_csv("urban.csv.gz", col_types = "cccd-")
+  AnswerTests: omnitest(correctExpr = 'urban <- read_csv("urban.csv.gz", col_types = "cccd-")')
+  Hint: The '-' character can be used to indicate that a column should be skipped
+  
+- Class: cmd_question
+  Output: Take a look at the first few rows of the 'urban' data frame object by calling the head() function on it. Confirm that there are fewer columns now.
+  CorrectAnswer: head(urban)
+  AnswerTests: omnitest(correctExpr = 'head(urban)')
+
+
+- Class: text
+  Output: Finally, we may only need the first few rows of a table at first and so it might make sense to tell read_csv() to only read in a few rows rather than the entire dataset.
+
+- Class: cmd_question
+  Output: Building on what we have done before, how would you additionally tell read_csv() to only read in the first 100 rows? Note that we still want to force the second column to be character and we do not want to read the last column.
+  CorrectAnswer: urban <- read_csv("urban.csv.gz", col_types = "cccd-", n_max = 100)
+  AnswerTests: omnitest(correctExpr = 'urban <- read_csv("urban.csv.gz", col_types = "cccd-", n_max = 100)')
+  Hint: The 'n_max' argument to read_csv() allows you to limit the number of rows that are read into R.
+
+- Class: mult_question
+  Output: "Would you like to receive credit for completing this course on
+    Coursera.org?"
+  CorrectAnswer: NULL
+  AnswerChoices: Yes;No;Generate Code
+  AnswerTests: coursera_on_demand()
+  Hint: ""
+
+

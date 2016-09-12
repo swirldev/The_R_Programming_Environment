@@ -1,18 +1,5 @@
-# Put custom tests in this file.
-
-# Uncommenting the following line of code will disable
-# auto-detection of new variables and thus prevent swirl from
-# executing every command twice, which can slow things down.
-
-# AUTO_DETECT_NEWVAR <- FALSE
-
-# However, this means that you should detect user-created
-# variables when appropriate. The answer test, creates_new_var()
-# can be used for for the purpose, but it also re-evaluates the
-# expression which the user entered, so care must be taken.
-
 keygen <- function(){
-  set.seed(sum(as.numeric(charToRaw("Regular_Expressions"))))
+  set.seed(sum(as.numeric(charToRaw("Setting_Up_Swirl"))))
   pran <- function(n = 1){
     replicate(n, sample(c(LETTERS, letters, 0:9), 1))
   }
@@ -50,11 +37,11 @@ coursera_on_demand <- function(){
     token <- readline("What is your assignment token? ")
     
     payload <- sprintf('{  
-                       "assignmentKey": "XoFZNXUfEeaflgpbsOXi2w",
+                       "assignmentKey": "ATsO13UGEeaWKQo_29qXIQ",
                        "submitterEmail": "%s",  
                        "secret": "%s",  
                        "parts": {  
-                       "8nqlM": {  
+                       "V84sK": {  
                        "output": "correct"  
                        }  
                        }  
@@ -70,14 +57,14 @@ coursera_on_demand <- function(){
       message("want to try to submit your grade at a later time.")
       return(FALSE)
     }
-} else if(selection == "No"){
-  return(TRUE)
-} else {
-  message("Submit the following code as the answer")
-  message("to a quiz question on Coursera.\n")
-  message("#########################\n")
-  message(keygen(), "\n")
-  message("#########################")
-  return(TRUE)
-}
+  } else if(selection == "No"){
+    return(TRUE)
+  } else {
+    message("Submit the following code as the answer")
+    message("to a quiz question on Coursera.\n")
+    message("#########################\n")
+    message(keygen(), "\n")
+    message("#########################")
+    return(TRUE)
   }
+}

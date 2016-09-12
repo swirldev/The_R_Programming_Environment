@@ -141,3 +141,59 @@
 - Class: text
   Output: In the previos case grepl() returns TRUE for all strings that contain 
     an "a" followed by any other character followed by a "b".
+
+- Class: text
+  Output: You can specify a regular expression that contains a certain number 
+    of characters or metacharacters using the enumeration metacharacters.
+
+- Class: cmd_question
+  Output: The "+" metacharacter indicates that one or more of the preceding 
+    expression should be present and "*" indicates that zero or more of the 
+    preceding expression is present. Use grepl() to see if the string "Maryland"
+    contains one for more of "a"
+  CorrectAnswer: grepl("a+", "Maryland")
+  AnswerTests: omnitest(correctExpr='grepl("a+", "Maryland")')
+  Hint: Just type grepl("a+", "Maryland")
+
+- Class: cmd_question
+  Output: Now use grepl() to see if the string "Maryland"
+    contains zero for more of "x"
+  CorrectAnswer: grepl("x*", "Maryland")
+  AnswerTests: omnitest(correctExpr='grepl("x*", "Maryland")')
+  Hint: Just type grepl("x*", "Maryland")
+
+- Class: text
+  Output: 'You can also specify exact numbers of expressions using curly 
+    brackets {}. For example "a{5}" specifies "a exactly five times,"
+    "a{2,5}" specifies "a between 2 and 5 times," and "a{2,}" specifies 
+    "a at least 2 times."'
+
+- Class: cmd_question
+  Output: Use grepl() to see if the string "Mississippi" contains exactly
+    two adjacent "s" (using curly brackets).
+  CorrectAnswer: grepl("s{2}", "Mississippi")
+  AnswerTests: omnitest(correctExpr='grepl("s{2}", "Mississippi")')
+  Hint: Just type grepl("s{2}", "Mississippi")
+  
+- Class: cmd_question
+  Output: Use grepl() to see if the string "Mississippi" contains two or three
+    adjacent "i" (using curly brackets).
+  CorrectAnswer: grepl("i{2,3}", "Mississippi")
+  AnswerTests: omnitest(correctExpr='grepl("i{2,3}", "Mississippi")')
+  Hint: Just type grepl("i{2,3}", "Mississippi")
+
+- Class: text
+  Output: In addition to curly brackets you can use parentheses "()" to create
+    a capturing group. A capturing group allows you to use quantifiers on other
+    regular expressions. Let's use a capturing group to see if the string
+    "Mississippi" contains the substring "iss" twice.
+
+- Class: cmd_question
+  Output: Type grepl("(iss){2}", "Mississippi") into the R console to see if
+    the substring "iss" exists twice adjacently in the string "Mississippi"
+  CorrectAnswer: grepl("(iss){2}", "Mississippi")
+  AnswerTests: omnitest(correctExpr='grepl("(iss){2}", "Mississippi")')
+  Hint: Just type grepl("(iss){2}", "Mississippi")
+
+- Class: text
+  Output: 

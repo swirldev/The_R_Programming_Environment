@@ -1,18 +1,33 @@
-# Put custom tests in this file.
+AUTO_DETECT_NEWVAR <- FALSE
 
-# Uncommenting the following line of code will disable
-# auto-detection of new variables and thus prevent swirl from
-# executing every command twice, which can slow things down.
-
-# AUTO_DETECT_NEWVAR <- FALSE
-
-# However, this means that you should detect user-created
-# variables when appropriate. The answer test, creates_new_var()
-# can be used for for the purpose, but it also re-evaluates the
-# expression which the user entered, so care must be taken.
+script_results_identical <- function(result_name) {
+  # Get e
+  e <- get('e', parent.frame())
+  # Get user's result from global
+  if(exists(result_name, globalenv())) {
+    user_res <- get(result_name, globalenv())
+  } else {
+    return(FALSE)
+  }
+  # Source correct result in new env and get result
+  tempenv <- new.env()
+  # Capture output to avoid double printing
+  temp <- capture.output(
+    local(
+      try(
+        source(e$correct_script_temp_path, local = TRUE),
+        silent = TRUE
+      ),
+      envir = tempenv
+    )
+  )
+  correct_res <- get(result_name, tempenv)
+  # Compare results
+  identical(user_res, correct_res)
+}
 
 keygen <- function(){
-  set.seed(sum(as.numeric(charToRaw("Regular_Expressions"))))
+  set.seed(sum(as.numeric(charToRaw("Data_Manipulation"))))
   pran <- function(n = 1){
     replicate(n, sample(c(LETTERS, letters, 0:9), 1))
   }
@@ -54,7 +69,7 @@ coursera_on_demand <- function(){
                        "submitterEmail": "%s",  
                        "secret": "%s",  
                        "parts": {  
-                       "8nqlM": {  
+                       "uWjD8": {  
                        "output": "correct"  
                        }  
                        }  
@@ -70,14 +85,14 @@ coursera_on_demand <- function(){
       message("want to try to submit your grade at a later time.")
       return(FALSE)
     }
-} else if(selection == "No"){
-  return(TRUE)
-} else {
-  message("Submit the following code as the answer")
-  message("to a quiz question on Coursera.\n")
-  message("#########################\n")
-  message(keygen(), "\n")
-  message("#########################")
-  return(TRUE)
-}
+  } else if(selection == "No"){
+    return(TRUE)
+  } else {
+    message("Submit the following code as the answer")
+    message("to a quiz question on Coursera.\n")
+    message("#########################\n")
+    message(keygen(), "\n")
+    message("#########################")
+    return(TRUE)
   }
+}

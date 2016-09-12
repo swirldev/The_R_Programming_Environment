@@ -22,10 +22,17 @@
     known as characters in R.
 
 - Class: cmd_question
-  Output: Create your own string in the R console by typing "Hello World!"
-  CorrectAnswer: 'Hello World!'
-  AnswerTests: omnitest(correctExpr='"Hello World!"')
-  Hint: Just type "Hello World!"
+  Output: Assign the string "Hello World!" to a variable called x.
+  CorrectAnswer: x <- "Hello World!"
+  AnswerTests: omnitest(correctExpr='x <- "Hello World!"')
+  Hint: Just type x <- "Hello World!"
+  
+- Class: cmd_question
+  Output: Now look at the value of that variable by entering x into the R
+    console.
+  CorrectAnswer: x
+  AnswerTests: omnitest(correctExpr='x')
+  Hint: Just type x
 
 - Class: cmd_question
   Output: You can combine several strings using the paste() function. Provide
@@ -121,3 +128,12 @@
 - Class: text
   Output: In this lesson we only covered the basics of manipulating strings in
     R, the real fun material is in the regular expressions lesson!
+
+- Class: mult_question
+  Output: "Would you like to receive credit for completing this course on
+    Coursera.org?"
+  CorrectAnswer: NULL
+  AnswerChoices: Yes;No
+  AnswerTests: coursera_on_demand()
+  Hint: ""
+

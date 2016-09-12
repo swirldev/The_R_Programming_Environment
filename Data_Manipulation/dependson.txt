@@ -1,0 +1,4 @@
+dplyr
+tidyr
+titanic
+faraway

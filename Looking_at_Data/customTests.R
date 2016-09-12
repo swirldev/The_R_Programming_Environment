@@ -1,18 +1,5 @@
-# Put custom tests in this file.
-
-# Uncommenting the following line of code will disable
-# auto-detection of new variables and thus prevent swirl from
-# executing every command twice, which can slow things down.
-
-# AUTO_DETECT_NEWVAR <- FALSE
-
-# However, this means that you should detect user-created
-# variables when appropriate. The answer test, creates_new_var()
-# can be used for for the purpose, but it also re-evaluates the
-# expression which the user entered, so care must be taken.
-
 keygen <- function(){
-  set.seed(sum(as.numeric(charToRaw("Regular_Expressions"))))
+  set.seed(sum(as.numeric(charToRaw("Reading_Tabular_Data"))))
   pran <- function(n = 1){
     replicate(n, sample(c(LETTERS, letters, 0:9), 1))
   }
@@ -54,7 +41,7 @@ coursera_on_demand <- function(){
                        "submitterEmail": "%s",  
                        "secret": "%s",  
                        "parts": {  
-                       "8nqlM": {  
+                       "qTmyg": {  
                        "output": "correct"  
                        }  
                        }  

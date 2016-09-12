@@ -1,0 +1,39 @@
+- Class: meta
+  Course: The R Programming Environment
+  Lesson: Setting Up Swirl
+  Author: Sean Kross
+  Type: Standard
+  Organization: The Johns Hopkins Data Science Lab
+  Version: 2.4.2
+
+- Class: text
+  Output: Welcome to the swirl component of The R Programming Environment course
+    on Coursera. This will be a very short lesson designed to test swirl's
+    connection to Coursera's servers.
+
+- Class: text
+  Output: At the end of every lesson you will be given a choice to submit to 
+    Coursera or to have a code generated. If this test succeeds then you should
+    continue to submit your progress to Coursera. However if this test fails
+    you should always choose to have a code generated.
+
+- Class: text
+  Output: Copy the generated code and then paste it into the quiz question on 
+    Coursera that corresponds to the lesson you're working on in swirl in
+    order to get credit.
+
+- Class: text
+  Output: Let's test submitting to Coursera now. In the next question choose
+    Yes. If you are not able to connect, then you know that you should always
+    ask for a code at the end of the lesson. If you are able to connect then
+    you should be able to submit your progress to swirl easily in the future!
+
+- Class: mult_question
+  Output: "Would you like to receive credit for completing this course on
+    Coursera.org?"
+  CorrectAnswer: NULL
+  AnswerChoices: Yes;No;Generate Code
+  AnswerTests: coursera_on_demand()
+  Hint: ""
+
+

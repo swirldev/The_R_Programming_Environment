@@ -1,0 +1,17 @@
+- Class: meta
+  Course: The R Programming Environment
+  Lesson: The stringr Package
+  Author: Sean Kross
+  Type: Standard
+  Organization: The Johns Hopkins Data Science Lab
+  Version: 2.4.2
+
+- Class: mult_question
+  Output: "Would you like to receive credit for completing this course on
+    Coursera.org?"
+  CorrectAnswer: NULL
+  AnswerChoices: Yes;No;Generate Code
+  AnswerTests: coursera_on_demand()
+  Hint: ""
+
+
