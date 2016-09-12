@@ -6,12 +6,10 @@
   Organization: The Johns Hopkins Data Science Lab
   Version: 2.4.2
 
-- Class: mult_question
-  Output: "Would you like to receive credit for completing this course on
-    Coursera.org?"
-  CorrectAnswer: NULL
-  AnswerChoices: Yes;No;Generate Code
-  AnswerTests: coursera_on_demand()
-  Hint: ""
+- Class: text
+  Output: The stringr package is wonderful for working with strings in R. Most
+    of the functions in stringr take the same two arguments, a string and then
+    a regex.
 
-
+- Class: text
+  Output: put your text output here
