@@ -48,6 +48,106 @@
   CorrectAnswer: sub("[Ii]", "1", c("Hawaii", "Illinois", "Kentucky"))
   AnswerTests: omnitest(correctExpr='sub("[Ii]", "1", c("Hawaii", "Illinois", "Kentucky"))')
   Hint: Just type sub("[Ii]", "1", c("Hawaii", "Illinois", "Kentucky"))
+
+- Class: cmd_question
+  Output: The gsub() function is nearly the same as sub() except it will replace
+    every instance of the regex that is matched in each string. Enter the exact
+    line of code you used in the previous question, except use gsub() instead
+    of sub().
+  CorrectAnswer: gsub("[Ii]", "1", c("Hawaii", "Illinois", "Kentucky"))
+  AnswerTests: omnitest(correctExpr='gsub("[Ii]", "1", c("Hawaii", "Illinois", "Kentucky"))')
+  Hint: Just type gsub("[Ii]", "1", c("Hawaii", "Illinois", "Kentucky"))
+
+- Class: mult_question
+  Output: The expression gsub("[Aao]", "0", c("Georgia", "Minnesota", "California"))
+    once evaluated will result in which of the following
+  AnswerChoices: Ge0rgi0 Minnes0t0 C0lif0rni0; Ge0rgia Minnes0ta Calif0rnia;Georgi0 Minnesot0 C0liforni0
+  CorrectAnswer: Ge0rgi0 Minnes0t0 C0lif0rni0
+  AnswerTests: omnitest(correctVal= 'Ge0rgi0 Minnes0t0 C0lif0rni0')
+  Hint: Take a look at the regular expression carefully, and remember the
+    different between sub() and gsub().
+
+- Class: text
+  Output: The last functions we'll talk about before we get into stringr's
+    functions is strsplit().
+
+- Class: cmd_question
+  Output: Store the names of all of the US states that contain two adjacent s's
+    by entering two_s <- state.name[grep("ss", state.name)] into the R console.
+  CorrectAnswer: two_s <- state.name[grep("ss", state.name)]
+  AnswerTests: omnitest(correctExpr='two_s <- state.name[grep("ss", state.name)]')
+  Hint: Just type two_s <- state.name[grep("ss", state.name)]
+
+- Class: cmd_question
+  Output: Now take a look at the value of this variable by entering two_s into
+    the R console.
+  CorrectAnswer: two_s
+  AnswerTests: omnitest(correctExpr='two_s')
+  Hint: Just type two_s
+
+- Class: cmd_question
+  Output: In order to split each string where the s's are located enter
+    strsplit(two_s, "ss") into the R console.
+  CorrectAnswer: strsplit(two_s, "ss")
+  AnswerTests: omnitest(correctExpr='strsplit(two_s, "ss")')
+  Hint: Just type strsplit(two_s, "ss")
+
+- Class: text
+  Output: Finally onto the stringr package! This package takes a “data first” 
+    approach to functions involving regex, so usually the string is the first 
+    argument and the regex is the second argument. The majority of the 
+    function names in stringr begin with str_.
+
+- Class: cmd_question
+  Output: The str_extract() function returns the sub-string of a string that 
+    matches the providied regular expression. Enter str_extract("Camaro Z28", "[0-9]+")
+    into the R console to give this function a spin.
+  CorrectAnswer: str_extract("Camaro Z28", "[0-9]+")
+  AnswerTests: omnitest(correctExpr='str_extract("Camaro Z28", "[0-9]+")')
+  Hint: Just type str_extract("Camaro Z28", "[0-9]+")
+
+- Class: cmd_question
+  Output: The str_order() function returns a numeric vector that corresponds 
+    to the alphabetical order of the strings in the provided vector. Enter
+    str_order(c("p", "e", "n", "g")) into the R console.
+  CorrectAnswer: str_order(c("p", "e", "n", "g"))
+  AnswerTests: omnitest(correctExpr='str_order(c("p", "e", "n", "g"))')
+  Hint: Just type str_order(c("p", "e", "n", "g"))
+
+- Class: cmd_question
+  Output: The str_pad() function pads strings with other characters which is 
+    often useful when the string is going to be eventually printed for a 
+    person to read. Try this out by entering str_pad("Thai", width = 8, side = "left", pad = "-")
+    into the R console.
+  CorrectAnswer: str_pad("Thai", width = 8, side = "left", pad = "-")
+  AnswerTests: omnitest(correctExpr='str_pad("Thai", width = 8, side = "left", pad = "-")')
+  Hint: Just type str_pad("Thai", width = 8, side = "left", pad = "-")
+
+- Class: cmd_question
+  Output: The str_to_title() function acts just like tolower() and toupper() 
+    except it puts strings into Title Case. Enter str_to_title(c("CAPS", "low", "Title"))
+    into the R console to see how this works.
+  CorrectAnswer: str_to_title(c("CAPS", "low", "Title"))
+  AnswerTests: omnitest(correctExpr='str_to_title(c("CAPS", "low", "Title"))')
+  Hint: Just type str_to_title(c("CAPS", "low", "Title"))
+
+- Class: cmd_question
+  Output: The str_trim() function deletes whitespace from both sides of a string.
+    Enter str_trim(" trim me ") into the R console.
+  CorrectAnswer: str_trim(" trim me ")
+  AnswerTests: omnitest(correctExpr='str_trim(" trim me ")')
+  Hint: Just type str_trim(" trim me ")
+
+- Class: cmd_question
+  Output: Lastly the word() function allows you to index each word in a string 
+    as if it were a vector. Enter word("See Spot run.", 2) into the R console
+    to test this out.
+  CorrectAnswer: word("See Spot run.", 2)
+  AnswerTests: omnitest(correctExpr='word("See Spot run.", 2)')
+  Hint: Just type word("See Spot run.", 2)
+
+- Class: text
+  Output: That's the end of our tour of stringr!
   
 - Class: mult_question
   Output: "Would you like to receive credit for completing this course on
