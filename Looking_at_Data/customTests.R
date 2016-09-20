@@ -30,22 +30,46 @@ getExpr <- function(){
   getState()$expr
 }
 
+get_coursera_log <- function(){
+  clog_path <- file.path(getState()$udat, "rpe2.rds")
+  if(!file.exists(clog_path)){
+    clog <- data.frame(ln = c("Reading_Tabular_Data",
+                              "Looking_at_Data",
+                              "Data_Manipulation"), complete = rep("incorrect", 3),
+                       stringsAsFactors = FALSE)
+    saveRDS(clog, clog_path)
+  }
+  
+  clog <- readRDS(clog_path)
+  clog$complete[which(clog$ln == "Looking_at_Data")] <- "correct"
+  saveRDS(clog, clog_path)
+  clog
+}
+
 coursera_on_demand <- function(){
   selection <- getState()$val
   if(selection == "Yes"){
     email <- readline("What is your email address? ")
     token <- readline("What is your assignment token? ")
     
+    clog <- get_coursera_log()
+    
     payload <- sprintf('{  
                        "assignmentKey": "XoFZNXUfEeaflgpbsOXi2w",
                        "submitterEmail": "%s",  
                        "secret": "%s",  
                        "parts": {  
+                       "unMFd": {  
+                       "output": "%s"  
+                       },
                        "qTmyg": {  
-                       "output": "correct"  
+                       "output": "%s"  
+                       },
+                       "uWjD8": {  
+                       "output": "%s"  
+                       }
                        }  
-                       }  
-  }', email, token)
+  }', email, token, clog$complete[1], clog$complete[2], clog$complete[3])
     url <- 'https://www.coursera.org/api/onDemandProgrammingScriptSubmissions.v1'
     
     respone <- httr::POST(url, body = payload)

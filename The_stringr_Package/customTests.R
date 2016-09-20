@@ -30,22 +30,46 @@ getExpr <- function(){
   getState()$expr
 }
 
+get_coursera_log <- function(){
+  clog_path <- file.path(getState()$udat, "rpe3.rds")
+  if(!file.exists(clog_path)){
+    clog <- data.frame(ln = c("Text_Manipulation_Functions",
+                              "Regular_Expressions",
+                              "The_stringr_Package"), complete = rep("incorrect", 3),
+                       stringsAsFactors = FALSE)
+    saveRDS(clog, clog_path)
+  }
+  
+  clog <- readRDS(clog_path)
+  clog$complete[which(clog$ln == "The_stringr_Package")] <- "correct"
+  saveRDS(clog, clog_path)
+  clog
+}
+
 coursera_on_demand <- function(){
   selection <- getState()$val
   if(selection == "Yes"){
     email <- readline("What is your email address? ")
     token <- readline("What is your assignment token? ")
     
+    clog <- get_coursera_log()
+    
     payload <- sprintf('{  
-                       "assignmentKey": "XoFZNXUfEeaflgpbsOXi2w",
+                       "assignmentKey": "nxrW12vOEea_xxKfzxlohw",
                        "submitterEmail": "%s",  
                        "secret": "%s",  
                        "parts": {  
+                       "aK1aR": {  
+                       "output": "%s"  
+                       },
+                       "8nqlM": {  
+                       "output": "%s"  
+                       },
                        "W3utJ": {  
-                       "output": "correct"  
+                       "output": "%s"  
+                       }
                        }  
-                       }  
-  }', email, token)
+  }', email, token, clog$complete[1], clog$complete[2], clog$complete[3])
     url <- 'https://www.coursera.org/api/onDemandProgrammingScriptSubmissions.v1'
     
     respone <- httr::POST(url, body = payload)

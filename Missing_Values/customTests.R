@@ -30,22 +30,66 @@ getExpr <- function(){
   getState()$expr
 }
 
+get_coursera_log <- function(){
+  clog_path <- file.path(getState()$udat, "rpe1.rds")
+  if(!file.exists(clog_path)){
+    clog <- data.frame(ln = c("Setting_Up_Swirl", "Basic_Building_Blocks", "Sequences_of_Numbers", 
+                              "Vectors", "Missing_Values", "Subsetting_Vectors", "Matrices_and_Data_Frames", 
+                              "Logic", "Workspace_and_Files"), complete = rep("incorrect", 9),
+                       stringsAsFactors = FALSE)
+    saveRDS(clog, clog_path)
+  }
+  
+  clog <- readRDS(clog_path)
+  clog$complete[which(clog$ln == "Missing_Values")] <- "correct"
+  saveRDS(clog, clog_path)
+  clog
+}
+
 coursera_on_demand <- function(){
   selection <- getState()$val
   if(selection == "Yes"){
     email <- readline("What is your email address? ")
     token <- readline("What is your assignment token? ")
     
+    clog <- get_coursera_log()
+    
     payload <- sprintf('{  
                        "assignmentKey": "ATsO13UGEeaWKQo_29qXIQ",
                        "submitterEmail": "%s",  
                        "secret": "%s",  
                        "parts": {  
+                       "V84sK": {  
+                       "output": "%s"  
+                       },
+                       "273Gf": {  
+                       "output": "%s"  
+                       },
+                       "aZzDe": {  
+                       "output": "%s"  
+                       },
+                       "uUxeT": {  
+                       "output": "%s"  
+                       },
                        "XblAh": {  
-                       "output": "correct"  
+                       "output": "%s"  
+                       },
+                       "5hEHU": {  
+                       "output": "%s"  
+                       },
+                       "Bbad8": {  
+                       "output": "%s"  
+                       },
+                       "WF7Ai": {  
+                       "output": "%s"  
+                       },
+                       "dEdnZ": {  
+                       "output": "%s"  
+                       }
                        }  
-                       }  
-  }', email, token)
+  }', email, token, clog$complete[1], clog$complete[2], clog$complete[3],
+                       clog$complete[4], clog$complete[5], clog$complete[6],
+                       clog$complete[7], clog$complete[8], clog$complete[9])
     url <- 'https://www.coursera.org/api/onDemandProgrammingScriptSubmissions.v1'
     
     respone <- httr::POST(url, body = payload)
