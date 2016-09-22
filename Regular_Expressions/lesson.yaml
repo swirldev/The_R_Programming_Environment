@@ -227,7 +227,7 @@
   Output: Let's try out a few of these character sets. Type grepl("\\d", "0123456789")
     into the R console to see if the string "0123456789" contains a digit.
   CorrectAnswer: grepl("\\d", "0123456789")
-  AnswerTests: omnitest(correctExpr='grepl("\\d", "0123456789")')
+  AnswerTests: omnitest(correctExpr='grepl("\x5c\x5cd", "0123456789")')
   Hint: Just type grepl("\\d", "0123456789")
 
 - Class: cmd_question
@@ -235,14 +235,14 @@
     grepl("\\D", "0123456789") into the R console to see if there are any
     non-digits in the string "0123456789"
   CorrectAnswer: grepl("\\D", "0123456789")
-  AnswerTests: omnitest(correctExpr='grepl("\\D", "0123456789")')
+  AnswerTests: omnitest(correctExpr='grepl("\x5c\x5cD", "0123456789")')
   Hint: Just type grepl("\\D", "0123456789")
 
 - Class: mult_question
   Output: Which of the following evaluates to FALSE?
   AnswerChoices: grepl("\\s", "abcdefghijklmnopqrstuvwxyz0123456789");grepl("\\w", "abcdefghijklmnopqrstuvwxyz0123456789");grepl("\\d", "abcdefghijklmnopqrstuvwxyz0123456789")
   CorrectAnswer: grepl("\\s", "abcdefghijklmnopqrstuvwxyz0123456789")
-  AnswerTests: omnitest(correctVal= 'grepl("\\s", "abcdefghijklmnopqrstuvwxyz0123456789")')
+  AnswerTests: omnitest(correctVal= 'grepl("\x5c\x5cs", "abcdefghijklmnopqrstuvwxyz0123456789")')
   Hint: Make sure to reference your table of metacharacters!
 
 - Class: text
@@ -283,14 +283,14 @@
   Output: Use grepl() to see whether or not a peroid exists in the string
     "http://www.jhsph.edu/"
   CorrectAnswer: grepl("\\.", "http://www.jhsph.edu/")
-  AnswerTests: omnitest(correctExpr='grepl("\\.", "http://www.jhsph.edu/")')
+  AnswerTests: omnitest(correctExpr='grepl("\x5c\x5c.", "http://www.jhsph.edu/")')
   Hint: Just type grepl("\\.", "http://www.jhsph.edu/")
 
 - Class: mult_question
   Output: Which of the following expressions evaluates to TRUE?
   AnswerChoices: grepl("\\+", "tragedy + time = humor");grepl("\\.", "tragedy + time = humor");grepl("\\*", "tragedy + time = humor")
   CorrectAnswer: grepl("\\+", "tragedy + time = humor")
-  AnswerTests: omnitest(correctVal= 'grepl("\\+", "tragedy + time = humor")')
+  AnswerTests: omnitest(correctVal= 'grepl("\x5c\x5c+", "tragedy + time = humor")')
   Hint: Remember you're not using metacharacters!
 
 - Class: text
