@@ -9,6 +9,6 @@
   )
 }
 
-datapath <- file.path(.get_course_path(), "R_Basics", "Reading_Tabular_data")
+datapath <- file.path(.get_course_path(), "The_R_Programming_Environment", "Reading_Tabular_Data")
 
 
