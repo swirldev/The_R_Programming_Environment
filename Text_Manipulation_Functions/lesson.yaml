@@ -133,7 +133,7 @@
   Output: "Would you like to receive credit for completing this course on
     Coursera.org?"
   CorrectAnswer: NULL
-  AnswerChoices: Yes;No
+  AnswerChoices: Yes;No;Generate Code
   AnswerTests: coursera_on_demand()
   Hint: ""
 
