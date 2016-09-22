@@ -1,5 +1,5 @@
 keygen <- function(){
-  set.seed(sum(as.numeric(charToRaw("Reading_Tabular_Data"))))
+  set.seed(sum(as.numeric(charToRaw("Looking_at_Data"))))
   pran <- function(n = 1){
     replicate(n, sample(c(LETTERS, letters, 0:9), 1))
   }
