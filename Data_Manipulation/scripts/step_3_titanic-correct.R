@@ -27,6 +27,6 @@
 titanic_3 <- titanic %>% 
   select(Survived, Pclass, Age, Sex) %>%
   filter(!is.na(Age)) %>%
-  mutate(agecat = cut(Age, breaks = c(0, 14, 50, 150), 
+  mutate(agecat = cut(Age, breaks = c(0, 14.99, 50, 150), 
                       include.lowest = TRUE,
                       labels = c("Under 15", "15 to 50", "Over 50")))
