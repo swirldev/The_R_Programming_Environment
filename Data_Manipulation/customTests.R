@@ -26,7 +26,7 @@ script_results_identical <- function(result_name) {
   identical(user_res, correct_res)
 }
 
-script_results_data <- function(result_name, data_file){
+script_results_data <- function(result_name, data_file, round_numeric_columns = FALSE){
   # Get user's result from global
   if(exists(result_name, globalenv())) {
     user_res <- get(result_name, globalenv())
@@ -34,13 +34,21 @@ script_results_data <- function(result_name, data_file){
     return(FALSE)
   }
   correct_res <- readRDS(.pathtofile(data_file))
+  # If specified, round any numeric columns to one digit before comparing
+  if(round_numeric_columns){
+    is.num <- sapply(user_res, is.numeric)
+    user_res[is.num] <- lapply(user_res[is.num], round, 1)
+    is.num <- sapply(correct_res, is.numeric)
+    correct_res[is.num] <- lapply(correct_res[is.num], round, 1)
+  }
   # Compare results
   identical(user_res, correct_res)
 }
 
-script_results_data2 <- function(result_name, data_file1, data_file2){
-  script_results_data(result_name, data_file1) ||
-    script_results_data(result_name, data_file2)
+script_results_data2 <- function(result_name, data_file1, data_file2,
+                                 round_numeric_columns = FALSE){
+  script_results_data(result_name, data_file1, round_numeric_columns) ||
+    script_results_data(result_name, data_file2, round_numeric_columns)
 }
 
 keygen <- function(){

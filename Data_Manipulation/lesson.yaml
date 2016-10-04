@@ -155,7 +155,7 @@
     When you are ready to submit your script, save the script and 
     type `submit()`, or type `reset()` to reset the script to its 
     original state.
-  AnswerTests: script_results_data2('titanic_4','titanic_4.rds','titanic_4_a.rds')
+  AnswerTests: script_results_data2('titanic_4','titanic_4.rds','titanic_4_a.rds', round_numeric_columns = TRUE)
   Hint: Check the example output in the comments of the script I 
     opened for you. Make sure the columns in your output are in the
     same order as shown in the example output in the script comments.
