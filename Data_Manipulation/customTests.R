@@ -26,6 +26,23 @@ script_results_identical <- function(result_name) {
   identical(user_res, correct_res)
 }
 
+script_results_data <- function(result_name, data_file){
+  # Get user's result from global
+  if(exists(result_name, globalenv())) {
+    user_res <- get(result_name, globalenv())
+  } else {
+    return(FALSE)
+  }
+  correct_res <- readRDS(.pathtofile(data_file))
+  # Compare results
+  identical(user_res, correct_res)
+}
+
+script_results_data2 <- function(result_name, data_file1, data_file2){
+  script_results_data(result_name, data_file1) ||
+    script_results_data(result_name, data_file2)
+}
+
 keygen <- function(){
   set.seed(sum(as.numeric(charToRaw("Data_Manipulation"))))
   pran <- function(n = 1){

@@ -5,5 +5,16 @@
 
 data("titanic_train")
 titanic <- titanic_train
-
 data(worldcup)
+
+.get_course_path <<- function(){
+  tryCatch(swirl:::swirl_courses_dir(),
+           error = function(c) {file.path(find.package("swirl"),"Courses")}
+  )
+}
+
+.pathtofile <<- function(fileName){
+  mypath <- file.path(.get_course_path(),
+                      "The_R_Programming_Environment", "Data_Manipulation",
+                      fileName)
+}
