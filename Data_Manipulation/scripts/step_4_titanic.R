@@ -15,7 +15,7 @@
 # should look like the following example, with the number of
 # passengers, number of survivors, and percent survival stratified
 # by passenger class, age category, and sex. Be sure to use the 
-# same column names as shown in the example output.
+# same column names as shown in the example output. 
 #
 ## Pclass   agecat    Sex      N     survivors   perc_survived
 ## <int>   <fctr>    <chr>   <int>     <int>         <dbl>

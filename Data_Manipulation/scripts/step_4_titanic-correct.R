@@ -13,7 +13,7 @@
 # first six lines look like this, where you've added, for each combination of 
 # `Pclass`, `agecat`, and `Sex`, the columns `N` (total number of passengers 
 # in that group), `survivors` (the number of people in the group who survived),
-# and `perc_survived` (the percent of people in the group who survived).
+# and `perc_survived` (the percent of people in the group who survived). 
 #
 ## Pclass   agecat    Sex      N     survivors   perc_survived
 ## <int>   <fctr>    <chr>   <int>     <int>         <dbl>
