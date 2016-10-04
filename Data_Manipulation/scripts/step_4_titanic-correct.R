@@ -29,7 +29,7 @@
 # When you are ready to move on, save the script and type submit(), or type 
 # reset() to reset the script to its original state.
 
-titanic_4_a <- titanic %>% 
+titanic_4 <- titanic %>% 
   select(Survived, Pclass, Age, Sex) %>%
   filter(!is.na(Age)) %>%
   mutate(agecat = cut(Age, breaks = c(0, 14.99, 50, 150), 
@@ -39,15 +39,3 @@ titanic_4_a <- titanic %>%
   summarize(N = n(),
             survivors = sum(Survived == 1),
             perc_survived = 100 * survivors / N)
-
-titanic_4_b <- titanic %>% 
-  select(Survived, Pclass, Age, Sex) %>%
-  filter(!is.na(Age)) %>%
-  mutate(agecat = cut(Age, breaks = c(0, 14.99, 50, 150), 
-                      include.lowest = TRUE,
-                      labels = c("Under 15", "15 to 50", "Over 50"))) %>%
-  group_by(Pclass, agecat, Sex) %>%
-  summarize(N = n(),
-            survivors = sum(Survived == 1),
-            perc_survived = 100 * survivors / N) %>%
-  ungroup()
