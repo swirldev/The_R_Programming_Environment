@@ -266,7 +266,7 @@
 
 - Class: mult_question
   Output: Which of the following expressions evaluates to TRUE?
-  AnswerChoices: grepl("[a-mA-M]", "ABC");grepl("[^AEIOU]", "rhythms");grepl("[a-m]", "ABC")
+  AnswerChoices: grepl("[a-mA-M]", "ABC");grepl("[aeiou]", "rhythms");grepl("[a-m]", "ABC")
   CorrectAnswer: grepl("[a-mA-M]", "ABC")
   AnswerTests: omnitest(correctVal= 'grepl("[a-mA-M]", "ABC")')
   Hint: Think about how character sets work!
