@@ -45,10 +45,11 @@ script_results_data <- function(result_name, data_file, round_numeric_columns = 
   identical(user_res, correct_res)
 }
 
-script_results_data2 <- function(result_name, data_file1, data_file2,
+script_results_data3 <- function(result_name, data_file1, data_file2, data_file3,
                                  round_numeric_columns = FALSE){
   script_results_data(result_name, data_file1, round_numeric_columns) ||
-    script_results_data(result_name, data_file2, round_numeric_columns)
+    script_results_data(result_name, data_file2, round_numeric_columns) ||
+    script_results_data(result_name, data_file3, round_numeric_columns)
 }
 
 keygen <- function(){
