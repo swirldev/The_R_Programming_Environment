@@ -36,4 +36,5 @@ titanic_4 <- titanic %>%
   group_by(Pclass, agecat, Sex) %>%
   summarize(N = n(),
             survivors = sum(Survived == 1),
-            perc_survived = 100 * survivors / N)
+            perc_survived = 100 * survivors / N,
+            .groups = "drop")
